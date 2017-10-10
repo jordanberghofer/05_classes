@@ -1,28 +1,35 @@
 spacer = "********"
 puts spacer
 
-class Customer
-    attr_accessor :account_number
-    attr_accessor :first_name
-    attr_accessor :last_name
+# This is the class 'Company'
+class Company
+    def initialize(comp_name)
+        @name = comp_name
+        @roster = Array.new
+    end
 
-    def initialize(an, fn, ln)
-        @account_number = an
-        @first_name = fn
-        @last_name = ln
+    def name
+        @name
+    end
+
+    def add_roster(title, employee_name)
+        @roster << ["#{title}:", "#{employee_name}"]
+    end
+
+    def company_roster
+        for title, employee_name in @roster
+            # puts "#{title}: #{employee_name}"
+        end
     end
 end
 
-class Cool_company
-    def initialize(cool_company)
-        @cool_company = cool_company
-    end
+cool_comp = Company.new("Cool-Cats INC.")
+cool_comp.add_roster("CTO", "Jordan Berghofer")
+cool_comp.add_roster("Henchman", "Daniel Greene")
+cool_comp.add_roster("Design-Lead", "Austin Kurtis")
 
-    # Returns the name of the company
-    def cool_company
-        @cool_company
-    end
-end
-
-#Add the remaining methods to fill the requirements
-
+puts spacer
+puts cool_comp.company_roster
+puts spacer
+puts cool_comp.name
+puts spacer
